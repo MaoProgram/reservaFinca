@@ -1,0 +1,21 @@
+server:
+  port: 8081
+
+spring:
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+
+    url: jdbc:postgresql://reservas-de-fincas-db.ch40uw2ie9o0.us-east-2.rds.amazonaws.com/reservas_de_fincas
+    username: postgres
+    password: Test123!
+    driver-class-name: org.postgresql.Driver
+
+application:
+  security:
+    jwt:
+      secret-key: d85193e2bdfe794b7f98a16924adf59d1e05bd7a8b157450fac917d0bf89e38b
+      expiration: 86400000

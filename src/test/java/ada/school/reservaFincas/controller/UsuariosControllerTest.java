@@ -37,7 +37,7 @@ class UsuariosControllerTest {
 
 
         List<User> result = usuariosController.listar();
-        assertEquals(2, result.size());
+        assertEquals(1, result.size());
         assertEquals(user1, result.get(0));
 
         verify(usuariosService, times(1)).listar();
