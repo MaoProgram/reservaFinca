@@ -1,27 +1,27 @@
-name: CI/CD PipeLine Deploy to AWS ECS
+name: CI/CD Pipeline Deploy to AWS ECS
 
 on:
   push:
-    branches: ["develop-cesar2"]
+    branches: [ "develop-cesar2" ]
 
 jobs:
   test:
     name: Run unit test
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'temurin'
       - name: Build with Maven
         env:
           SPRING_CONFIG_LOCATION: src/test/resources/application-test.yml
-        run: mvn packcage --file pom.xml
+        run: mvn package --file pom.xml
       - name: Run Unit Tests
         env:
-          SPRING_CONFIG_LOCATION: src/test/resourses/application-test.yml
+          SPRING_CONFIG_LOCATION: src/test/resources/application-test.yml
         run: mvn test --file pom.xml
   build:
     name: Build and publish on ECS
